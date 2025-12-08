@@ -57,7 +57,7 @@ def main():
                 page.goto(src_url)
                 page.wait_for_selector("pre.prettyprint")
 
-                code = page.locator("pre.prettyprint").inner_text()
+                code = page.locator("pre.prettyprint").inner_text().encode("ascii", errors="ignore").decode("ascii")
                 
                 file_path = f"codes/{problem_code}{get_extension(language_text)}"
                 if(not os.path.exists(file_path)):
